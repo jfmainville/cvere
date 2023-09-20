@@ -1,0 +1,10 @@
+node_modules/
+
+# Environment Variables
+.env
+
+# macOS
+.DS_Store
+
+# Firebase
+firebase/*.log
