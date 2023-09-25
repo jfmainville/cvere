@@ -1,0 +1,16 @@
+@import "../../sass/variables";
+
+body {
+  overflow-x: hidden;
+}
+
+.Layout {
+  display: flex;
+}
+
+.Content {
+  display: flex;
+  overflow-y: auto;
+  width: 100vw;
+  height: 100vh;
+}

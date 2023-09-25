@@ -1,0 +1,21 @@
+@import "../../sass/variables";
+
+.InputLabel {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Input {
+  height: 2rem;
+  margin-top: .5rem;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  margin-bottom: 1rem;
+  outline: 1px solid $color-grey-light-3;
+  padding-left: 1rem;
+
+  &:focus {
+    outline: none;
+    border: 2px solid $color-blue-light;
+  }
+}

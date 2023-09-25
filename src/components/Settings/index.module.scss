@@ -1,0 +1,29 @@
+@import "../../sass/variables";
+
+.Container {
+  display: flex;
+  flex-direction: row;
+}
+
+.MenuSection {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.MenuItem {
+  padding: 1rem 0 1rem 1rem;
+  width: 10rem;
+  cursor: pointer;
+  --active: #{$color-grey-light-1};
+
+  &:hover {
+    background-color: $color-grey-light-1;
+  }
+}
+
+.ContentSection {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}

@@ -1,0 +1,36 @@
+@import "../../sass/variables";
+
+.TransparentBackground {
+  background-color: transparent;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1000;
+}
+
+.Dropdown {
+  z-index: 1001;
+  position: fixed;
+  width: 10rem;
+  top: 4rem;
+  right: 0;
+  background-color: $color-white;
+  box-shadow: $box-shadow-right;
+}
+
+.DropdownItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 3rem;
+  padding-left: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-grey-light-1;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,40 @@
+@import "../../sass/variables";
+
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  position: absolute;
+  width: 100vw;
+  background-color: $color-white;
+  border-bottom: 1px solid $border-grey-light;
+  box-shadow: $box-shadow-bottom;
+  z-index: 2;
+}
+
+.Logo {
+  display: flex;
+  align-items: center;
+}
+
+.ActiveProject {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $color-grey-dark-1;
+}
+
+.Settings {
+  display: flex;
+  align-items: center;
+  right: 0;
+  margin-right: 1rem;
+  position: relative;
+}
+
+.UserProfilePhoto {
+  border-radius: 50%;
+  border: 3px solid $color-blue-light;
+  cursor: pointer;
+}

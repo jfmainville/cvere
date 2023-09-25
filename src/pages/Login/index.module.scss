@@ -1,0 +1,98 @@
+@import "../../sass/variables";
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background-color: $color-white;
+}
+
+.Logo {
+  width: 8rem;
+  height: 8rem;
+  background-color: $color-white;
+  border-radius: 50%;
+  box-shadow: $box-shadow-all;
+  position: relative;
+}
+
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Separator {
+  margin-top: 1.5rem;
+  width: 20rem;
+  text-align: center;
+  border-bottom: 1px solid $color-grey-light-3;
+  line-height: 0.1em;
+}
+
+.SeparatorText {
+  background: $color-white;
+  font-size: 1rem;
+  color: $color-grey-light-3;
+  padding: 0 10px;
+}
+
+.Input {
+  margin-top: 1rem;
+  width: 20rem;
+  height: 3rem;
+  font-size: 18px;
+  border-radius: 3px;
+  border: none;
+  padding-left: 1rem;
+  outline: 1px solid $color-grey-light-3;
+}
+
+.ForgotPassword {
+  margin-top: .5rem;
+}
+
+.ErrorMessage {
+  margin: 1rem 0 1rem 0;
+  height: 1rem;
+  color: $color-red;
+}
+
+.LoginButton {
+  margin-top: 1rem;
+  width: 21rem;
+  height: 3rem;
+  border: none;
+  border-radius: 3px;
+  color: $color-white;
+  background-color: $color-blue-light;
+  outline: 1px solid transparent;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: $box-shadow-bottom;
+
+  &:hover {
+    color: $color-blue-light;
+    background-color: $color-white;
+    outline: 1px solid $color-blue-light;
+  }
+}
+
+.Signup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
