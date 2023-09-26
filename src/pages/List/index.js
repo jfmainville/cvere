@@ -12,12 +12,13 @@ const List = () => {
     }, []);
 
     const fetchCVEData = async () => {
-        const response = await axios.get("https://services.nvd.nist.gov/rest/json/cves/2.0?lastModStartDate=2023-09-18T13:00:00.000%2B01:00&lastModEndDate=2023-09-19T13:36:00.000%2B01:00")
-        const vulnerabilities = response.data["vulnerabilities"]
         let today = new Date()
         let maxDate = new Date()
         maxDate.setDate(today.getDate() - 30)
         const response = await axios.get(`https://services.nvd.nist.gov/rest/json/cves/2.0?lastModStartDate=${maxDate.toISOString().replace("Z", "")}%2B01:00&lastModEndDate=${today.toISOString().replace("Z", "")}%2B01:00`)
+        let vulnerabilities = response.data["vulnerabilities"]
+        vulnerabilities.sort((a, b) => new Date(b.cve.lastModified) - new Date(a.cve.lastModified))
+
         setCveList(vulnerabilities)
     }
 
