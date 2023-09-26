@@ -1,6 +1,16 @@
 @import "../../sass/variables";
 
 .Container {
-  margin-top: 4rem;
+  margin: 4rem;
   position: relative;
+}
+
+th {
+  border: 1px solid $color-grey-light-3;
+  padding: .1rem;
+}
+
+td {
+  border: 1px solid $color-grey-light-3;
+  padding: .5rem;
 }
