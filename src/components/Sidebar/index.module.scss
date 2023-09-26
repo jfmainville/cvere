@@ -5,30 +5,26 @@
   width: 20rem;
   flex-direction: column;
   margin-top: 3rem;
-  background-color: $color-white;
+  background-color: $color-purple-light;
   z-index: 1;
   box-shadow: $box-shadow-right;
 }
 
-.TabSection {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.Link {
+  padding: 1rem;
+  text-decoration: none;
+  color: $color-white;
+  background-color: $color-purple-light;
+
+  &:hover {
+    color: $color-purple-light;
+    background-color: $color-white;
+  }
 }
 
-.Tab {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 8rem;
-  height: 3rem;
-  cursor: pointer;
-  background-color: $color-grey-light-1;
-  --active-design: #{$color-blue-light};
-  --active-design-border: #{$color-blue-dark};
-  --active-budget: #{$color-green-light};
-  --active-budget-border: #{$color-green-dark};
-  --active-deploy: #{$color-purple-light};
-  --active-deploy-border: #{$color-purple-dark};
-  --inactive-border: #{$color-grey-light-2}
+.ActiveLink {
+  padding: 1rem;
+  text-decoration: none;
+  color: $color-purple-light;
+  background-color: $color-white;
 }
