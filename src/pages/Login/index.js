@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authenticateBasic, authenticateGitHub, authenticateGoogle } from "../../store/authActions";
 import classes from "./index.module.scss";
 import { Link } from "react-router-dom";
-import { GitHubLoginButton, GoogleLoginButton } from "../../components/SocialLoginButtons";
-import CloudGraphLogo from "../../assets/images/cloudgraph-logo.png";
+import { GoogleLoginButton } from "../../components/SocialLoginButtons";
 
 const Login = () => {
     const [userEmailAddress, setUserEmailAddress] = useState("");
@@ -29,10 +28,8 @@ const Login = () => {
 
     return (
       <div className={classes.Container}>
-          <img className={classes.Logo} src={CloudGraphLogo} alt=""/>
           <div className={classes.Login}>
               <GoogleLoginButton onHandleClick={onHandleGoogleLogin}/>
-              <GitHubLoginButton onHandleClick={onHandleGitHubLogin}/>
               <h2 className={classes.Separator}><span className={classes.SeparatorText}>or</span></h2>
               <form className={classes.LoginForm}>
                   <input className={classes.Input} type="email" defaultValue={userEmailAddress}

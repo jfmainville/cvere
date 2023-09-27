@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import classes from "./index.module.scss";
 import { Link } from "react-router-dom";
-import CloudGraphLogo from "../../assets/images/cloudgraph-logo.png";
 import { createBasicUser } from "../../store/authActions";
 
 const Signup = () => {
@@ -17,7 +16,6 @@ const Signup = () => {
 
     return (
       <div className={classes.Container}>
-          <img className={classes.Logo} src={CloudGraphLogo} alt=""/>
           <div className={classes.Login}>
               <form className={classes.SignupForm}>
                   <input className={classes.Input} type="email" defaultValue={userEmailAddress}
