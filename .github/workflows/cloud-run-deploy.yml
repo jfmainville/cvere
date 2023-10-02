@@ -7,17 +7,17 @@ jobs:
   docker_build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Code
+      - name: Checkout the current git repository
         uses: actions/checkout@v4
-      - name: Set up Docker Buildx
+      - name: Setup the Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Login to GCP Artifact Container Registry (ACR)
+      - name: Login to the GCP Artifact Container Registry (ACR)
         uses: docker/login-action@v3
         with:
           registry: "${{ vars.GCP_REGION }}-docker.pkg.dev"
           username: _json_key
           password: ${{ secrets.GCP_CREDENTIALS }}
-      - name: Build and push Docker image
+      - name: Build and push the Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -31,14 +31,14 @@ jobs:
   gcp_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Code
+      - name: Checkout the current git repository
         uses: actions/checkout@v4
-      - name: Authenticate to Google Cloud
+      - name: Authenticate to GCP
         id: auth
         uses: google-github-actions/auth@v1
         with:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
-      - name: Deploy to GCP Cloud Run
+      - name: Deploy to GCP Cloud Run service
         run: |
           gcloud run deploy nuagir-cvere-client-cr-usce1-prod \
             --image "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.sha }}" \
