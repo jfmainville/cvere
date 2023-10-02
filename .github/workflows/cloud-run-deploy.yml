@@ -40,7 +40,7 @@ jobs:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
       - name: Deploy to GCP Cloud Run service
         run: |
-          gcloud run deploy nuagir-cvere-client-cr-usce1-prod \
+          gcloud run deploy "${{ vars.GCP_CLOUD_RUN_SERVICE_NAME }}" \
             --image "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.sha }}" \
             --region "${{ vars.GCP_REGION }}"
     needs: docker_build
