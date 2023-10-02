@@ -1,5 +1,7 @@
 name: Build Docker image and deploy to GCP Cloud Run
-on: [ push ]
+on:
+  branches:
+    - main
 jobs:
   docker_build:
     runs-on: ubuntu-latest
