@@ -13,12 +13,12 @@ const Table = ({ cveTableHeaders, cveTableData }) => {
             </thead>
             <tbody>
             {cveTableData.map((cveItem) => (
-                <tr key={cveItem.cve.id}>
-                    <td>{cveItem.cve.id}</td>
-                    <td>{cveItem.cve["descriptions"][0]["value"]}</td>
-                    <td>{cveItem.cve.vulnStatus}</td>
-                    <td>{cveItem.cve.published}</td>
-                    <td>{cveItem.cve.lastModified}</td>
+                <tr key={cveItem.id}>
+                    <td>{cveItem.id}</td>
+                    <td>{cveItem.description}</td>
+                    <td>{cveItem.vulnerabilityStatus}</td>
+                    <td>{cveItem.publishedDate}</td>
+                    <td>{cveItem.lastModifiedDate}</td>
                 </tr>
             ))}
             </tbody>

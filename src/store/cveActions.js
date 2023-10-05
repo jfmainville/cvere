@@ -1,10 +1,11 @@
 import {cveActions} from "./cveSlice";
 import axiosConfig from "../utils/axios";
+import axios from "axios";
 
-export const fetchCVEs = () => {
+export const fetchCVEs = (lastModifiedStartDate, lastModifiedEndDate) => {
     return async (dispatch) => {
         const fetchData = async () => {
-            const response = await axiosConfig.get("/cves");
+            const response = await axios.get(`https://services.nvd.nist.gov/rest/json/cves/2.0?lastModStartDate=${lastModifiedStartDate.toISOString().replace("Z", "")}%2B01:00&lastModEndDate=${lastModifiedEndDate.toISOString().replace("Z", "")}%2B01:00`);
 
             if (response.status !== 200) {
                 throw new Error("Could not fetch CVE data");
@@ -21,7 +22,7 @@ export const fetchCVEs = () => {
                 })
             );
         } catch (error) {
-            throw new Error("Unable to fetch resources");
+            throw new Error("Unable to fetch cves");
         }
     };
 };
