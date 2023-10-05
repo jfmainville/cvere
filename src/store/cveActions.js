@@ -1,5 +1,4 @@
 import {cveActions} from "./cveSlice";
-import axiosConfig from "../utils/axios";
 import axios from "axios";
 
 export const fetchCVEs = (lastModifiedStartDate, lastModifiedEndDate) => {
