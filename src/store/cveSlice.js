@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const cveSlice = createSlice({
     name: "cve",
     initialState: {
-        cves: []
+        cves: [],
+        startDate: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString(),
+        endDate: new Date().toISOString()
     },
     reducers: {
         fetchCVEs(state, action) {
