@@ -80,15 +80,14 @@ const defaultFilterValue = [
 
 ];
 const List = () => {
+    const startDate = useSelector(state => state.cve.startDate);
+    const endDate = useSelector(state => state.cve.endDate)
     const cves = useSelector(state => state.cve.cves);
     const dispatch = useDispatch()
 
     useEffect(() => {
-        let today = new Date()
-        let maxDate = new Date()
-        maxDate.setDate(today.getDate() - 30)
-        dispatch(fetchCVEs(maxDate, today))
-    }, []);
+        dispatch(fetchCVEs(startDate, endDate))
+    }, [startDate, endDate]);
 
     if (!cves) {
         return (<Spinner/>)
