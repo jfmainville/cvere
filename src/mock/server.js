@@ -1,6 +1,4 @@
-import { createServer, Model, RestSerializer } from "miragejs";
-import { edges, resources } from "./dummyData";
-import { v4 as uuidv4 } from "uuid";
+import { createServer, Model } from "miragejs";
 
 const makeServer = ({ environment = "test" }) => {
     createServer({
