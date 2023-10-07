@@ -17,7 +17,6 @@ export const fetchCVEs = (startDate, endDate) => {
             const cveData = await fetchData();
             dispatch(
                 cveActions.fetchCVEs({
-                    cveData
                     cveData,
                     startDate,
                     endDate
@@ -25,6 +24,21 @@ export const fetchCVEs = (startDate, endDate) => {
             );
         } catch (error) {
             throw new Error("Unable to fetch cves");
+        }
+    };
+};
+
+export const updateCVEsDateRange = (dateRange) => {
+    return async (dispatch) => {
+        try {
+            dispatch(
+              cveActions.updateCVEsDateRange({
+                  startDate: dateRange[0].toISOString(),
+                  endDate: dateRange[1].toISOString()
+              })
+            );
+        } catch (error) {
+            throw new Error("Unable to update the CVEs date range");
         }
     };
 };
