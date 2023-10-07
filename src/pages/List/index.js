@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import Layout from "../../hoc/Layout";
 import Table from "../../components/Table";
 import Spinner from "../../components/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCVEs } from "../../store/cveActions";
-import SelectFilter from "@inovua/reactdatagrid-community/SelectFilter";
+import DateFilter from "@inovua/reactdatagrid-community/DateFilter";
+import moment from "moment";
+
+window.moment = moment
 
 const columns = [
     {
@@ -18,14 +21,6 @@ const columns = [
         header: "CVE Description",
         defaultFlex: 2,
         minWidth: 500,
-        filterEditor: SelectFilter,
-        filterEditorProps: {
-            multiple: true,
-            wrapMultiple: false,
-            dataSource: ['Google Workspace', 'Google Cloud Platform'].map(c => {
-                return { id: c, label: c }
-            }),
-        }
     },
     {
         name: "vulnerabilityStatus",
@@ -35,47 +30,67 @@ const columns = [
     },
     {
         name: "publishedDate",
-        header: "Published Date",
+        header: "PublishedDate",
         defaultFlex: 1,
-        minWidth: 200
+        minWidth: 200,
+        dateFormat: "YYYY-MM-DD",
+        filterEditor: DateFilter,
+        filterEditorProps: (props, { index }) => {
+            return {
+                dateFormat: "MM-DD-YYYY",
+                placeholder: "Date"
+            }
+        },
+        render: ({ value, cellProps: { dateFormat } }) =>
+            moment(value).format(dateFormat),
     },
     {
         name: "lastModifiedDate",
         header: "Last Modified Date",
         defaultFlex: 1,
-        minWidth: 200
+        minWidth: 200,
+        dateFormat: "YYYY-MM-DD",
+        filterEditor: DateFilter,
+        filterEditorProps: (props, { index }) => {
+            return {
+                dateFormat: "MM-DD-YYYY",
+                placeholder: "Date"
+            }
+        },
+        render: ({ value, cellProps: { dateFormat } }) =>
+            moment(value).format(dateFormat),
     }
 ]
 
 const defaultFilterValue = [
     {
-        name: 'id',
-        operator: 'contains',
-        type: 'string',
-        value: ''
+        name: "id",
+        operator: "contains",
+        type: "string",
+        value: ""
     },
     {
-        name: 'description',
-        operator: 'inlist',
-        type: 'select', value: []
+        name: "description",
+        operator: "contains",
+        type: "string", value: ""
     },
-       {
-        name: 'vulnerabilityStatus',
-        operator: 'contains',
-        type: 'string',
-        value: ''
+    {
+        name: "vulnerabilityStatus",
+        operator: "contains",
+        type: "string",
+        value: ""
     },
-        {
-        name: 'publishedDate',
-        operator: 'date',
-        type: 'string',
-        value: ''
+    {
+        name: "publishedDate",
+        operator: "eq",
+        type: "date",
+        value: ""
     },
-        {
-        name: 'lastModifiedDate',
-        operator: 'date',
-        type: 'string',
-        value: ''
+    {
+        name: "lastModifiedDate",
+        operator: "eq",
+        type: "date",
+        value: ""
     },
 
 ];

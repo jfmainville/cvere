@@ -10,6 +10,7 @@ body {
 
 .Content {
   display: flex;
+  flex-direction: column;
   overflow-y: auto;
   width: 100vw;
   height: 100vh;
