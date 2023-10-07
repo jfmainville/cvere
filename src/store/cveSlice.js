@@ -20,6 +20,10 @@ const cveSlice = createSlice({
             })
             state.cves.sort((a, b) => new Date(b.lastModifiedDate) - new Date(a.lastModifiedDate))
         },
+        updateCVEsDateRange(state, action) {
+            state.startDate = action.payload.startDate
+            state.endDate = action.payload.endDate
+        },
     }
 });
 
