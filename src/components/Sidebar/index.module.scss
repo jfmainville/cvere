@@ -18,6 +18,7 @@
 
   &:hover {
     color: $color-purple-light;
+    text-decoration: none;
     background-color: $color-white;
   }
 }
@@ -27,4 +28,8 @@
   text-decoration: none;
   color: $color-purple-light;
   background-color: $color-white;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
