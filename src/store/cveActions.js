@@ -18,6 +18,9 @@ export const fetchCVEs = (startDate, endDate) => {
             dispatch(
                 cveActions.fetchCVEs({
                     cveData
+                    cveData,
+                    startDate,
+                    endDate
                 })
             );
         } catch (error) {
