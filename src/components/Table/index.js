@@ -10,12 +10,28 @@ import { updateCVEsDateRange } from "../../store/cveActions";
 const Table = ({ cveTableHeaders, cveTableData, defaultFilterValue }) => {
     const startDate = useSelector(state => state.cve.startDate);
     const endDate = useSelector(state => state.cve.endDate)
-    const [calendarDateRange, setCalendarDateRange] = useState([])
+    const [calendarStartDate, setCalendarStartDate] = useState(startDate)
+    const [calendarEndDate, setCalendarEndDate] = useState(endDate)
     const dispatch = useDispatch()
     const gridStyle = { minHeight: 650 }
 
+    const onCalendarChange = (calendarDateRange) => {
+        const calendarStartDate = calendarDateRange[0].toISOString()
+        const calendarEndDate = calendarDateRange[1].toISOString()
+
+        if (startDate !== calendarStartDate) {
+            if (endDate !== calendarEndDate) {
+                setCalendarStartDate(calendarStartDate)
+                setCalendarEndDate(calendarEndDate)
+            }
+        }
+
+    }
+
     const onCalendarClose = () => {
-        dispatch(updateCVEsDateRange(calendarDateRange))
+        if (calendarStartDate && calendarEndDate) {
+            dispatch(updateCVEsDateRange(calendarStartDate, calendarEndDate))
+        }
     }
 
     return (
@@ -25,7 +41,7 @@ const Table = ({ cveTableHeaders, cveTableData, defaultFilterValue }) => {
                 cleanable={false}
                 className={classes.DateRangePicker}
                 defaultValue={[new Date(startDate), new Date(endDate)]}
-                onChange={(calendarDateRange) => setCalendarDateRange(calendarDateRange)}
+                onChange={(calendarDateRange) => onCalendarChange(calendarDateRange)}
                 onClose={() => onCalendarClose()}
             />
             <ReactDataGrid

@@ -28,13 +28,13 @@ export const fetchCVEs = (startDate, endDate) => {
     };
 };
 
-export const updateCVEsDateRange = (dateRange) => {
+export const updateCVEsDateRange = (startDate, endDate) => {
     return async (dispatch) => {
         try {
             dispatch(
                 cveActions.updateCVEsDateRange({
-                    startDate: dateRange[0].toISOString(),
-                    endDate: dateRange[1].toISOString()
+                    startDate: startDate,
+                    endDate: endDate
                 })
             );
         } catch (error) {
