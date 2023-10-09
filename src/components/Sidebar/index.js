@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
     return (
         <div className={classes.Sidebar}>
-            <NavLink to={"/"} className={({isActive}) => (isActive ? classes.ActiveLink : classes.Link)}>Dashboard</NavLink>
+            <NavLink to={"/dashboard"} className={({isActive}) => (isActive ? classes.ActiveLink : classes.Link)}>Dashboard</NavLink>
             <NavLink to={"/"} className={({isActive}) => (isActive ? classes.ActiveLink : classes.Link)}>Reports</NavLink>
         </div>
     );

@@ -11,6 +11,7 @@ import { loading } from "./store/uiActions";
 import Spinner from "./components/Spinner";
 import Signup from "./pages/Signup";
 import List from "./pages/List";
+import Dashboard from "./pages/Dashboard";
 
 function App () {
     const isLoading = useSelector(state => state.ui.isLoading);
@@ -49,6 +50,7 @@ function App () {
       <Routes>
           <Route element={<PrivateRoutes/>}>
               <Route path="/" element={<List/>}/>
+              <Route path="/dashboard" element={<Dashboard/>}/>
           </Route>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
