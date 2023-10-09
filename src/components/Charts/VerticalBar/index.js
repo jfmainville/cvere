@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -7,8 +7,9 @@ import {
     Title,
     Tooltip,
     Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
+import classes from "./index.module.scss"
 
 ChartJS.register(
     CategoryScale,
@@ -19,7 +20,7 @@ ChartJS.register(
     Legend
 );
 
-export const VerticalBar = ({ cves }) => {
+const VerticalBar = ({ cves }) => {
     const cvesRawData = cves.reduce((acc, cve) => {
         const formattedLastModifiedDate = cve.lastModifiedDate.split("T")[0]
         acc[formattedLastModifiedDate] = (acc[formattedLastModifiedDate] || 0) + 1;
@@ -36,30 +37,31 @@ export const VerticalBar = ({ cves }) => {
         labels: cvesLabels,
         datasets: [
             {
-                label: 'CVEs',
+                label: "CVEs",
                 data: cvesData,
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
             }
         ]
     }
 
     const options = {
         responsive: true,
+        maintainAspectRatio: true,
         plugins: {
             legend: {
                 position: "bottom",
             },
             title: {
                 display: true,
-                text: 'CVEs per Day',
+                text: "CVEs per Day",
             },
         },
     };
 
     return (
-        <React.Fragment>
+        <div className={classes.Canvas}>
             <Bar options={options} data={data}/>
-        </React.Fragment>
+        </div>
     )
 }
 export default VerticalBar;
