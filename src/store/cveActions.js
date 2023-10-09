@@ -1,4 +1,4 @@
-import {cveActions} from "./cveSlice";
+import { cveActions } from "./cveSlice";
 import axios from "axios";
 
 export const fetchCVEs = (startDate, endDate) => {
@@ -32,10 +32,10 @@ export const updateCVEsDateRange = (dateRange) => {
     return async (dispatch) => {
         try {
             dispatch(
-              cveActions.updateCVEsDateRange({
-                  startDate: dateRange[0].toISOString(),
-                  endDate: dateRange[1].toISOString()
-              })
+                cveActions.updateCVEsDateRange({
+                    startDate: dateRange[0].toISOString(),
+                    endDate: dateRange[1].toISOString()
+                })
             );
         } catch (error) {
             throw new Error("Unable to update the CVEs date range");
