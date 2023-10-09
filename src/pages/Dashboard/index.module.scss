@@ -2,6 +2,7 @@
 
 .Container {
   display: flex;
+  flex-direction: column;
   margin: 4rem 1rem 1rem 1rem;
   position: relative;
 }
