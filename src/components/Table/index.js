@@ -7,7 +7,7 @@ import 'rsuite/dist/rsuite.min.css';
 import { useDispatch, useSelector } from "react-redux";
 import { updateCVEsDateRange } from "../../store/cveActions";
 
-const Table = ({ cveTableHeaders, cveTableData, defaultFilterValue }) => {
+const Table = React.memo(({ cveTableHeaders, cveTableData, defaultFilterValue }) => {
     const startDate = useSelector(state => state.cve.startDate);
     const endDate = useSelector(state => state.cve.endDate)
     const [calendarStartDate, setCalendarStartDate] = useState(startDate)
@@ -55,6 +55,6 @@ const Table = ({ cveTableHeaders, cveTableData, defaultFilterValue }) => {
             />
         </div>
     )
-};
+});
 
 export default Table;
