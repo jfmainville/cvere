@@ -18,7 +18,7 @@ export const fetchCVEs = (startDate, endDate) => {
                 })
             );
         } catch (error) {
-            throw new Error("Unable to fetch cves");
+            console.log("Unable to fetch the latest CVE list");
         }
     };
 };
