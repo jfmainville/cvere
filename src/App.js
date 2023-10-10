@@ -29,14 +29,14 @@ function App () {
             dispatch(authenticate({ user: { displayName: "Test User", email: "test@gmail.com", photoUrl: "" } }));
             dispatch(loading(false));
             if (isAuthenticated && userLogin) {
-                navigate("/");
+                navigate("/dashboard");
             }
         } else {
             onAuthStateChanged(auth, (user) => {
                 dispatch(authenticate({ user: user }));
                 dispatch(loading(false));
                 if (isAuthenticated && userLogin) {
-                    navigate("/");
+                    navigate("/dashboard");
                 }
             });
         }
