@@ -33,7 +33,7 @@ export const updateCVEsDateRange = (startDate, endDate) => {
                 })
             );
         } catch (error) {
-            throw new Error("Unable to update the CVEs date range");
+            console.log("Unable to extract the CVE list for the date range specified")
         }
     };
 };
