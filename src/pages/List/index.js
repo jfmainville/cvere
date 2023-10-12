@@ -16,6 +16,12 @@ const columns = [
         minWidth: 200,
     },
     {
+        field: "baseSeverity",
+        headerName: "Base Severity",
+        flex: 2,
+        minWidth: 200,
+    },
+    {
         field: "description",
         headerName: "CVE Description",
         flex: 3,
