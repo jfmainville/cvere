@@ -4,7 +4,7 @@ const cveSlice = createSlice({
     name: "cve",
     initialState: {
         cves: [],
-        startDate: new Date(new Date().setDate(new Date().getDate() - 7)).toISOString(),
+        startDate: new Date(new Date().setDate(new Date().getDate() - 3)).toISOString(),
         endDate: new Date().toISOString()
     },
     reducers: {
