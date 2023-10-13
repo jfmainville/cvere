@@ -18,8 +18,8 @@ const columns = [
     {
         field: "baseSeverity",
         headerName: "Base Severity",
-        flex: 2,
-        minWidth: 200,
+        flex: 1,
+        minWidth: 100,
     },
     {
         field: "description",
@@ -36,15 +36,15 @@ const columns = [
     {
         field: "publishedDate",
         headerName: "Published Date",
-        flex: 2,
-        minWidth: 200,
+        flex: 1,
+        minWidth: 100,
         valueFormatter: params => moment(params?.value).format("YYYY-MM-DD"),
     },
     {
         field: "lastModifiedDate",
         headerName: "Last Modified Date",
-        flex: 2,
-        minWidth: 200,
+        flex: 1,
+        minWidth: 100,
         valueFormatter: params => moment(params?.value).format("YYYY-MM-DD"),
     }
 ]
