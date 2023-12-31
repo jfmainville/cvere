@@ -1,10 +1,10 @@
-name: Build Docker image and deploy to GCP Cloud Run
+name: Build Docker image and deploy to the GCP GKE cluster
 on:
   push:
     branches:
       - main
 jobs:
-  docker_build:
+  build:
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -29,7 +29,7 @@ jobs:
           build-args: |
             REACT_APP_FIREBASE_API_KEY=${{ secrets.REACT_APP_FIREBASE_API_KEY }}
             REACT_APP_FIREBASE_AUTH_DOMAIN=${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN }}
-  gcp_deploy:
+  deploy:
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -45,4 +45,4 @@ jobs:
           gcloud run deploy "${{ vars.GCP_CLOUD_RUN_SERVICE_NAME }}" \
             --image "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.sha }}" \
             --region "${{ vars.GCP_REGION }}"
-    needs: docker_build
+    needs: build

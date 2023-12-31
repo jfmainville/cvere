@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: deployment
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: deployment
+    spec:
+      containers:
+        - name: cvere-client-container
+          image: cvere-client-image
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REACT_APP_ENV_NAME
+              value: production
+            - name: REACT_APP_FIREBASE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: cvere-secret
+                  key: REACT_APP_FIREBASE_API_KEY
+            - name: REACT_APP_FIREBASE_AUTH_DOMAIN
+              value: nuagir-prod.firebaseapp.com
+            - name: REACT_APP_NVD_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: cvere-secret
+                  key: REACT_APP_NVD_API_KEY
+          resources:
+            limits:
+              cpu: 100m
+              memory: 500Mi
+            requests:
+              cpu: 50m
+              memory: 100Mi

@@ -1,0 +1,11 @@
+commonLabels:
+  app: cvere-client
+  env: lab
+  tier: frontend
+namePrefix: cvere-client-
+resources:
+  - deployment.yaml
+  - service.yaml
+  - backend-config.yaml
+  - ingress.yaml
+  - issuer.yaml
