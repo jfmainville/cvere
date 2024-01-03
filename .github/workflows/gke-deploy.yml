@@ -24,7 +24,7 @@ jobs:
           context: .
           push: true
           tags: |
-            "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.sha }}"
+            "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.SHA }}"
             "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:latest"
           build-args: |
             REACT_APP_FIREBASE_API_KEY=${{ secrets.REACT_APP_FIREBASE_API_KEY }}
@@ -48,5 +48,5 @@ jobs:
       - name: Deploy the latest Docker image in the GKE cluster
         run: |-
           kubectl apply -k kubernetes/${{ vars.ENVIRONMENT_NAME }}/
-          kubectl set image deployment/cvere-client-deployment cvere-client-container=${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.sha }}
+          kubectl set image deployment/cvere-client-deployment cvere-client-container=${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.SHA }}
     needs: build
