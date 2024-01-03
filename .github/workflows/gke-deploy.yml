@@ -43,8 +43,8 @@ jobs:
       - name: Complete the base configuration to access the GKE cluster
         uses: google-github-actions/get-gke-credentials@db150f2cc60d1716e61922b832eae71d2a45938f
         with:
-          cluster_name: ${{ env.GKE_CLUSTER_NAME }}
-          location: ${{ env.GKE_ZONE_NAME }}
+          cluster_name: ${{ vars.GKE_CLUSTER_NAME }}
+          location: ${{ vars.GKE_ZONE_NAME }}
           credentials: ${{ secrets.GCP_CREDENTIALS }}
       - name: Deploy the latest Docker image in the GKE cluster
         run: |-
