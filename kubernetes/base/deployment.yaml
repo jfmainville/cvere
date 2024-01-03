@@ -31,14 +31,14 @@ spec:
             - name: REACT_APP_FIREBASE_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: cvere-secret
+                  name: cvere-client-secret
                   key: REACT_APP_FIREBASE_API_KEY
             - name: REACT_APP_FIREBASE_AUTH_DOMAIN
               value: nuagir-prod.firebaseapp.com
             - name: REACT_APP_NVD_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: cvere-secret
+                  name: cvere-client-secret
                   key: REACT_APP_NVD_API_KEY
           resources:
             limits:
