@@ -40,9 +40,14 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
-      - name: Deploy to GCP Cloud Run service
-        run: |
-          gcloud run deploy "${{ vars.GCP_CLOUD_RUN_SERVICE_NAME }}" \
-            --image "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.sha }}" \
-            --region "${{ vars.GCP_REGION }}"
+      - name: Complete the base configuration to access the GKE cluster
+        uses: google-github-actions/get-gke-credentials@db150f2cc60d1716e61922b832eae71d2a45938f
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER_NAME }}
+          location: ${{ env.GKE_ZONE_NAME }}
+          credentials: ${{ secrets.GCP_CREDENTIALS }}
+      - name: Deploy the latest Docker image in the GKE cluster
+        run: |-
+          kubectl apply -k kubernetes/${{ vars.ENVIRONMENT_NAME }}/
+          kubectl set image deployment/cvere-client-deployment cvere-client-container=${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/acr/cvere-client:${{ github.sha }}
     needs: build
